@@ -26,6 +26,18 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  def followings
+    @user = User.find(params[:id])
+    @pagy, @followings = pagy(@user.followings)
+    counts(@user)
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @pagy, @followers = pagy(@user.followers)
+    counts(@user)
+  end
 
   private
 
